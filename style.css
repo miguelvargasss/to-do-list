@@ -17,6 +17,10 @@ body {
     width: 100%;
     max-width: 500px;
     position: relative;
+     /* PROPIEDADES PARA CENTRAR EL CONTENIDO */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
 }
 
 /* Scroll */
@@ -36,7 +40,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 40%;
     padding: 10px 15px;
     background-color: #f0f0f0; 
     color: #333;
