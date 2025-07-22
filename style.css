@@ -17,10 +17,6 @@ body {
     width: 100%;
     max-width: 500px;
     position: relative;
-     /* PROPIEDADES PARA CENTRAR EL CONTENIDO */
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
 }
 
 /* Scroll */
@@ -39,11 +35,12 @@ h1 {
 .add-new-task-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
+    margin-left: auto; 
     width: 40%;
     padding: 10px 15px;
     background-color: #f0f0f0; 
-    color: #333;
+    color: #5391e2;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
@@ -209,13 +206,19 @@ h1 {
 
 .task-list-daily li .task-details {
     display: flex;
-    align-items: center;
-    flex-grow: 1;
+    flex-direction: column; 
+    flex: 1;
+    margin-right: 10px;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .task-list-daily li .task-description {
-    flex-grow: 1;
-    margin-right: 10px;
+    white-space: normal; 
+    display: block; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    max-width: 100%;
 }
 
 .task-list-daily li .priority-info {
@@ -254,6 +257,15 @@ h1 {
 }
 
 /* Estilos para los botones de acción de cada tarea */
+.task-list-daily li div { 
+    display: flex; 
+    flex-shrink: 0; 
+    margin-left: auto; 
+    white-space: nowrap; 
+    align-items: center; 
+}
+
+
 .task-list-daily li div button {
     background-color: #4035dc;
     color: white;
