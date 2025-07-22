@@ -1,0 +1,275 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('./modules/estudioFondo.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+/* Scroll */
+#daily-tasks-container {
+    max-height: 400px; 
+    overflow-y: auto;  
+    padding-right: 10px; 
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.add-new-task-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #f0f0f0; 
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px; 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease;
+}
+
+.add-new-task-btn:hover {
+    background-color: #e0e0e0; 
+}
+
+.add-new-task-btn .plus-icon {
+    font-size: 20px;
+    margin-left: 8px;
+    line-height: 1; 
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+    justify-content: center;
+    align-items: center; 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Centrar el contenido del modal */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 90%; /* Ancho responsivo */
+    max-width: 400px; /* Ancho máximo para el formulario */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* Animación para el modal */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-top: 0;
+    color: #000000;
+}
+
+/* Estilos para los grupos de formulario (label e input/select/textarea) */
+.form-group {
+    margin-bottom: 15px;
+}
+
+
+/* Día, prioridad y descripcion */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.form-group select,
+.form-group textarea {
+    width: calc(100% - 22px); 
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; 
+}
+
+.form-group textarea {
+    resize: vertical; 
+    min-height: 80px;
+}
+
+/* Indicador de color para la prioridad */
+.priority-color-indicator {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-left: 10px;
+    vertical-align: middle;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para los botones de acción del formulario */
+.form-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.form-actions .save-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-actions .save-btn:hover {
+    background-color: #0056b3;
+}
+
+.form-actions .cancel-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.form-actions .cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Estilos para la visualización de tareas por día */
+.day-section {
+    margin-bottom: 25px;
+}
+
+.day-section h2 {
+    font-size: 20px;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.task-list-daily {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-list-daily li {
+    background-color: #f9f9f9;
+    border: 1px solid #b1b0b0;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.task-list-daily li .task-details {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.task-list-daily li .task-description {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.task-list-daily li .priority-info {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap; 
+}
+
+.task-list-daily li .priority-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Colores para los puntos de prioridad */
+.priority-dot.high, .priority-color-indicator.high {
+    background-color: #dc3545; /* Rojo */
+}
+.priority-dot.medium, .priority-color-indicator.medium {
+    background-color: #007bff; /* Azul */
+}
+.priority-dot.low, .priority-color-indicator.low {
+    background-color: #28a745; /* Verde */
+}
+
+/* Estilos para tareas completadas */
+.task-list-daily li.completed {
+    text-decoration: line-through;
+    color: #48b948;
+    background-color: #ececec;
+}
+
+/* Estilos para los botones de acción de cada tarea */
+.task-list-daily li div button {
+    background-color: #4035dc;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.task-list-daily li div button:hover {
+    background-color: #0056b3; 
+}
+
+.task-list-daily li div .delete-btn {
+    background-color: #dc3545; 
+}
+
+.task-list-daily li div .delete-btn:hover {
+    background-color: #c82333;
+}
