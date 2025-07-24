@@ -15,6 +15,37 @@ const taskDescriptionInput = document.getElementById('task-description');
 const cancelTaskBtn = document.getElementById('cancel-task-btn');
 const dailyTasksContainer = document.getElementById('daily-tasks-container');
 const priorityColorIndicator = document.getElementById('priority-color-indicator');
+const reloj = document.getElementById('reloj');
+
+
+// Función para actualizar el reloj en tiempo real
+const upDateClock = () => {
+    const ahora = new Date(); // Obtener la fecha y hora actual
+
+    let hours = ahora.getHours();
+    let minutes = ahora.getMinutes();
+    let seconds = ahora.getSeconds();
+
+    // Para que siempre tenga dos dígitos
+    // Si es menor a 10, se le añade un 0 al inicio
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    // Construir la cadena de tiempo en formato HH:MM:SS
+    const presentTime = `${hours} : ${minutes} : ${seconds}`;
+
+    // Actualizar el contenido del reloj
+    document.getElementById('reloj').textContent = presentTime; 
+}
+
+setInterval(upDateClock, 1000); // Actualizar el reloj cada segundo
+// Llamar a la función una vez para mostrar el reloj inmediatamente al cargar la página
+upDateClock();
+
+
+
+
 
 // Array de los dias para tener un orden específico
 const daysOfWeek = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
